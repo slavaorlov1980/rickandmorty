@@ -1,8 +1,6 @@
 from django.views import View
 from django.http import JsonResponse
-from .models import *
-
-from django.core.serializers import serialize
+from .models import AllChars, Episodes
 
 data = {
         'result': '',
@@ -15,7 +13,7 @@ class IndexView(View):
     def get(self, request):
         data = {
                 'name': request.user.username,
-                'url': 'http://www.ya.ru',
+                'url': 'slavaorlov1980.pythonanywhere.com',
                 'skills': ['Python', 'Django'],
         }
         return JsonResponse(data)
@@ -25,7 +23,6 @@ class RAMView(View):
     pass
     """
     def most_popular(self):
-        name = CharEpisodeLink.objects.all()
-        data['result'] = name
+
         return JsonResponse(data) """
 
