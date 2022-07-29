@@ -21,18 +21,13 @@ class AllChars(models.Model):
 class Episodes(models.Model):
     id = models.IntegerField(primary_key=True)
     episode = models.IntegerField()
+    id_char = models.ManyToManyField(AllChars)
 
     def __str__(self):
         return self.episode
 
 
-class CharEpisodeLink(models.Model):
-    id_char = models.IntegerField()
-    id_episode = models.IntegerField()
+# class CharEpisodeLink(models.Model):
+#     id_char = models.IntegerField()
+#     id_episode = models.IntegerField()
 
-if __name__ == '__main__':
-
-    def fill_data():
-        with open('scripts/rnm_char_data.json') as file:
-            data = json.load(file)
-            print(data)
