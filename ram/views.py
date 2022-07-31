@@ -1,4 +1,3 @@
-from django.views import View
 from django.http import JsonResponse
 from .models import AllChars, Episodes
 
@@ -7,22 +6,17 @@ data = {
         'error': '',
 }
 
+def index(request):
+    data = {
+            'name': request.user.username,
+            'url': 'slavaorlov1980.pythonanywhere.com',
+            'skills': ['Python', 'Django'],
+    }
+    return JsonResponse(data)
 
-class IndexView(View):
-
-    def get(self, request):
-        data = {
-                'name': request.user.username,
-                'url': 'slavaorlov1980.pythonanywhere.com',
-                'skills': ['Python', 'Django'],
-        }
-        return JsonResponse(data)
-
-
-class RAMView(View):
-    pass
-    """
-    def most_popular(self):
-
-        return JsonResponse(data) """
+def most_popular(request):
+    a = AllChars.objects.get(pk=1)
+    result = str(a.episodes_set.all())
+    data['result'] = result
+    return JsonResponse(data)
 

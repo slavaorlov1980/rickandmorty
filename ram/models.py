@@ -1,5 +1,4 @@
 from django.db import models
-import json
 
 
 class AllChars(models.Model):
@@ -25,8 +24,8 @@ class AllChars(models.Model):
 
 class Episodes(models.Model):
     id = models.IntegerField(primary_key=True)
-    episode = models.IntegerField()
-    id_char = models.ManyToManyField(AllChars)
+    episode = models.CharField(max_length=250, verbose_name='Эпизод')
+    chars = models.ManyToManyField(AllChars)
 
     def __str__(self):
         return self.episode
@@ -35,9 +34,4 @@ class Episodes(models.Model):
         verbose_name = 'Эпизод'
         verbose_name_plural = 'Эпизоды'
         ordering = ['episode']
-
-
-# class CharEpisodeLink(models.Model):
-#     id_char = models.IntegerField()
-#     id_episode = models.IntegerField()
 

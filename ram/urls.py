@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views import IndexView
+from . import views
 
 urlpatterns = [
-        path('', IndexView.as_view()),
-     #   path('most_popular/', RAMView.most_popular()),
+        path('', views.index),
+        path('most_popular/', views.most_popular),
 ]
